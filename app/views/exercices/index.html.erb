@@ -1,0 +1,16 @@
+<div class="container">
+<h1 class="text-center">Exercices</h1>
+    <div class="row">
+        <% @exercices.each do |exercice| %>
+            <%= link_to new_exercice_attempt_path(exercice) do  %>
+                <div class="card mb-5 p-5 d-flex justify-content-between">
+                    <h3>
+                        <%= exercice.name %>
+                    </h3>
+                    <p><%= exercice.attempts.find_by(user: current_user).present? ? "check" : "unkeck" %></p>
+                </div>
+            <% end %>
+        <% end %>
+        
+    </div>
+</div>

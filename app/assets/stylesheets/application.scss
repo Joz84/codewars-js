@@ -10,3 +10,21 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+#container-editorid {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+#ace-editorid {
+    font-size: 0.9em;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+  }
