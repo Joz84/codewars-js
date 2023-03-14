@@ -1,19 +1,30 @@
 <h1>Attempts#new</h1>
 <p>Find me in app/views/attempts/new.html.erb</p>
 
-<div id="container-editorid">
-    <code id="ace-editorid">
-        def coco(): {
-            test
-        }
-    </code>
- </div>
+<div data-controller="code-editor">
+    <%= simple_form_for [@exercice, @attempt], html: { data: {
+      code_editor_target: "form",
+      action: "submit->code-editor#run"
+    }} do |f| %>
+    <div id="container-editorid">
+        <div id="container-editorid">
+            <code id="ace-editorid" data-action="keyup->code-editor#addToInput">
+    const coco = () => {
+        return test;
+    }
+            </code>
+        </div>
+    </div>
+    <%= f.input :answer, input_html: {data: { code_editor_target: "answer" }} %>
+    <%= f.button :submit, "Run", class: "btn btn-warning" %>
+    <% end %>
+</div>
 
 <script src="https://releases.jquery.com/git/jquery-git.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
 <script>
-    //cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js
-    var theme = "ace/theme/tomorrow";
+    // https://codepen.io/jakob-e/pen/qByWLp
+    var theme = "ace/theme/monokai";
     var mode = "ace/mode/javascript";
     var editor = ace.edit("ace-editorid");
     editor.setTheme(theme);
